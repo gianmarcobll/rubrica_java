@@ -20,12 +20,11 @@ public class GestoreDB {
             String ip = props.getProperty("db.ip-server-mysql", "localhost");
             String port = props.getProperty("db.porta", "3306");
             String dbName = props.getProperty("db.nome-database", "rubrica_db");
-            // L'URL per MySQL con parametri standard per evitare warning
+            
             this.url = "jdbc:mysql://" + ip + ":" + port + "/" + dbName + "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
             this.user = props.getProperty("db.username");
             this.password = props.getProperty("db.password");
 
-            // Carica il driver JDBC (non strettamente necessario per JDK 6+ ma buona pratica)
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Configurazione database caricata: " + url + " per utente: " + user);
 

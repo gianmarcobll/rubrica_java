@@ -2,12 +2,10 @@
 
 -- 1. Creazione del Database
 -- Se il database 'rubrica_db' esiste già, lo eliminiamo per ricrearlo pulito.
--- Questo è utile per test e sviluppo, ma attenzione in produzione!
 DROP DATABASE IF EXISTS rubrica_db;
 CREATE DATABASE rubrica_db;
 
 -- 2. Selezione del Database
--- D'ora in poi, tutte le operazioni SQL saranno eseguite all'interno di 'rubrica_db'.
 USE rubrica_db;
 
 -- 3. Creazione della Tabella 'utenti'
@@ -40,23 +38,13 @@ CREATE TABLE IF NOT EXISTS persone (
 );
 
 -- 5. Creazione di un Utente Dedicato per l'Applicazione (Raccomandato per la sicurezza)
--- Non usare 'root' direttamente dall'applicazione.
 -- Inserisci la password che hai deciso di usare nel file 'credenziali_database.properties'.
--- Se l'utente 'rubrica_user' esiste già, questa riga lo elimina per ricrearlo pulito.
--- Adatta la password 'password_sicura' alla tua scelta!
 DROP USER IF EXISTS 'rubrica_user'@'localhost';
 CREATE USER 'rubrica_user'@'localhost' IDENTIFIED BY 'password_sicura';
 
 -- 6. Concessione dei Permessi all'Utente dell'Applicazione
--- Questo utente avrà tutti i permessi sul database 'rubrica_db'.
--- '@'localhost' significa che l'utente può connettersi solo da questo computer.
 GRANT ALL PRIVILEGES ON rubrica_db.* TO 'rubrica_user'@'localhost';
 
 -- 7. Ricarica dei Privilegi
 -- Questo comando è importante per rendere effettive le modifiche ai permessi.
 FLUSH PRIVILEGES;
-
--- Note per l'esecuzione:
--- Puoi eseguire questo script usando MySQL Workbench, la riga di comando MySQL (mysql -u root -p < schema_database.sql),
--- o qualsiasi altro client SQL per MySQL.
--- Assicurati di essere connesso come un utente con privilegi sufficienti (es. 'root') per creare database e utenti.

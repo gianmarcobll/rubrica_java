@@ -15,7 +15,7 @@ public class LoginGUI extends JDialog implements ActionListener {
     private boolean loggedIn = false;
 
     public LoginGUI(RubricaGUI parent, GestioneRubrica gestore) {
-        super(parent, "Login Rubrica", true); // Modale
+        super(parent, "Login Rubrica", true);
         this.gestoreRubrica = gestore;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(350, 200);
@@ -79,7 +79,6 @@ public class LoginGUI extends JDialog implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Username e Password non possono essere vuoti.", "Errore Registrazione", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            // Qui potresti chiedere anche l'email se necessaria
             boolean registrato = gestoreRubrica.registraUtente(username, password);
             if (registrato) {
                 JOptionPane.showMessageDialog(this, "Registrazione avvenuta con successo! Puoi ora effettuare il login.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);

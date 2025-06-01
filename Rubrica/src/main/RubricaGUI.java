@@ -78,11 +78,9 @@ public class RubricaGUI extends JFrame implements ActionListener{
 
         // --- Inizializzazione e Posizionamento della JToolBar in basso al centro ---
 
-        // 1. Crea la JToolBar come hai già fatto
         toolBar = new JToolBar("Comandi Rubrica");
-        toolBar.setFloatable(false); // Opzionale: impedisce alla toolbar di essere trascinata fuori dalla finestra
-
-        // 2. Aggiungi i bottoni alla toolbar
+        toolBar.setFloatable(false);
+        
         nuovoButton = new JButton("Nuovo");
         try { ImageIcon iconNuovo = new ImageIcon(getClass().getResource("/icons/new.png")); nuovoButton.setIcon(iconNuovo); } catch (Exception e) { System.err.println("Immagine new.png non trovata: " + e.getMessage()); }
         nuovoButton.setToolTipText("Aggiungi un nuovo contatto");
@@ -102,16 +100,11 @@ public class RubricaGUI extends JFrame implements ActionListener{
         eliminaButton.setToolTipText("Elimina il contatto selezionato");
         toolBar.add(eliminaButton);
 
-        // 3. Crea un JPanel con FlowLayout.CENTER
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        // 4. Aggiungi la toolbar a questo pannello
         bottomPanel.add(toolBar);
 
-        // 5. Aggiungi il pannello al BorderLayout.SOUTH del JFrame
         add(bottomPanel, BorderLayout.SOUTH);
 
-
-        // --- Aggiunta degli ActionListeners ---
         nuovoButton.addActionListener(this);
         modificaButton.addActionListener(this);
         eliminaButton.addActionListener(this);
